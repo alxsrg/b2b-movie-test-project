@@ -1,0 +1,17 @@
+<mat-dialog-content>
+  <h3 mat-dialog-title>{{data.title}}</h3>
+  <p>{{data.message}}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <span class="fill-space"></span>
+  <button *ngIf="data.isConfirm"
+          mat-stroked-button
+          mat-dialog-close
+          class="m-right-5">No Thank
+  </button>
+
+  <button mat-stroked-button
+          [mat-dialog-close]="data.isConfirm"
+          cdkFocusInitial>{{data.isConfirm ? 'Yes' : 'Ok'}}
+  </button>
+</mat-dialog-actions>

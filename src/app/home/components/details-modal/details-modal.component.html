@@ -1,0 +1,55 @@
+<mat-dialog-content>
+  <ng-template #spinner>
+    <mat-spinner diameter="30"></mat-spinner>
+  </ng-template>
+  <ng-container *ngIf="model; else spinner">
+
+    <mat-grid-list cols="2" rowHeight="2:1">
+      <mat-grid-tile>
+        <ng-container mat-list-icon [ngSwitch]="!!model.posterImg">
+          <img style="display: table-cell" *ngSwitchCase="true"
+               class="option-img"
+               aria-hidden
+               [src]="model.posterImg"
+               width="100">
+          <mat-icon class="no-image-icon"
+                    *ngSwitchCase="false"
+                    mat-list-icon>camera_alt
+          </mat-icon>
+        </ng-container>
+      </mat-grid-tile>
+      <mat-grid-tile class="details-title"><h2>{{model.title}} ({{model.year}})</h2></mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-list class="det-list">
+      <mat-list-item *ngFor="let pair of movieDataPairs" [ngSwitch]="pair[0]">
+        <ng-container *ngSwitchCase="'ratings'">
+          <mat-icon mat-list-icon>arrow_right</mat-icon>
+          <strong>{{model.getPropertyName('ratings')}}:</strong>
+          <ul *ngFor="let rating of pair[1]">
+            <li>[{{rating['Source']}}]: {{rating['Value']}}</li>
+          </ul>
+          <mat-divider></mat-divider>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'website'">
+          <mat-icon mat-list-icon>arrow_right</mat-icon>
+          <strong>{{model.getPropertyName(pair[0])}}:</strong>&nbsp;<a style="outline: none" [href]="pair[1]"
+                                                                       target="_blank">{{pair[1]}}</a>
+          <mat-divider></mat-divider>
+        </ng-container>
+
+        <ng-container *ngSwitchDefault>
+          <mat-icon mat-list-icon>arrow_right</mat-icon>
+          <strong>{{model.getPropertyName(pair[0])}}:</strong>&nbsp;{{pair[1]}}
+          <mat-divider></mat-divider>
+        </ng-container>
+      </mat-list-item>
+    </mat-list>
+  </ng-container>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <span class="fill-space"></span>
+  <button mat-stroked-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

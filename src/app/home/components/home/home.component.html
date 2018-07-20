@@ -1,0 +1,56 @@
+<mat-card class="basic-container z-depth-1">
+
+  <mat-form-field class="search-form">
+    <input matInput placeholder="Enter the first letters of the movie"
+           aria-label="Enter the first letters of the movie"
+           [matAutocomplete]="auto"
+           [formControl]="searchCtrl"
+           [(ngModel)]="selectedMovie">
+
+    <mat-autocomplete #auto="matAutocomplete"
+                      [displayWith]="movieSelectDisplayFn">
+      <mat-option *ngIf="isLoading" class="is-loading">
+        <mat-spinner diameter="30"></mat-spinner>
+      </mat-option>
+      <ng-container *ngIf="!isLoading">
+        <mat-option *ngFor="let movie of filteredEntries"
+                    [value]="movie">
+
+          <ng-container [ngSwitch]="!!movie.posterImg">
+            <img *ngSwitchCase="true"
+                 class="option-img"
+                 aria-hidden
+                 [src]="movie.posterImg"
+                 width="30"
+                 height="30">
+            <mat-icon
+              *ngSwitchCase="false"
+              mat-list-icon>camera_alt
+            </mat-icon>
+          </ng-container>
+
+          <span>{{movie.title}}</span> |
+          <small>Year: {{movie.year}}</small>
+        </mat-option>
+      </ng-container>
+    </mat-autocomplete>
+
+    <mat-error *ngIf="searchCtrl.hasError('minlength')">
+      Please enter minimum 3 letters for search
+    </mat-error>
+  </mat-form-field>
+  <button
+    mat-raised-button matTooltip="Add movie to list"
+    class="add-but"
+    (click)="addSelectedMovie()">
+    <mat-icon mat-list-icon>playlist_add</mat-icon>
+    Add to list
+  </button>
+
+  <mat-list>
+    <h4 mat-subheader><strong>Movies added:</strong></h4>
+    <div *ngFor="let entry of movieList">
+      <app-movie [model]="entry" (onDelete)="deleteMovieEntry($event)"></app-movie>
+    </div>
+  </mat-list>
+</mat-card>

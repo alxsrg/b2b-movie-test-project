@@ -1,0 +1,95 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+.main-content {
+  margin: auto;
+  max-width: 700px;
+}
+
+.toolbar-container {
+  padding: 30px;
+  margin-top: 30px;
+  max-width: 700px;
+  width: 100%;
+  background: #282828;
+  color: #fefefe;
+  font: 18px 'Arial Narrow', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  text-align: left;
+}
+
+.toolbar-logo-text {
+  color: #dc006c;
+  margin-right: 5px;
+}
+
+.basic-container {
+  margin-bottom: 30px;
+  max-width: 700px;
+  background-color: #fafafa;
+}
+
+.detail-container {
+  font: 14px 'Arial Narrow', sans-serif;
+  text-align: left;
+}
+
+.mat-raised-button.del-but {
+  min-width: 50px;
+  padding: 0 0;
+  margin-left: 5px;
+}
+
+.mat-raised-button.add-but {
+  background-color: #36b561;
+  color: #FFF;
+  margin-left: 5px;
+  min-width: 120px;
+}
+
+.mat-raised-button.det-but {
+  min-width: 120px;
+}
+
+.mat-display-1.p-color {
+  color: #3f51b5;
+}
+
+.mat-stroked-button.m-right-5 {
+  margin-right: 5px;
+}
+
+.z-depth-1 {
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3) !important;
+}
+
+.search-form {
+  min-width: 150px;
+  max-width: 505px;
+  width: 100%;
+}
+
+.option-img {
+  vertical-align: middle;
+}
+
+.fill-space {
+  flex: 1 1 auto;
+}
+
+.mat-list-icon.no-image-icon {
+  width: 70px !important;
+  text-align: center;
+}
+
+.det-list .mat-list-item {
+  height: auto !important;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.details-title > figure {
+  justify-content: flex-start !important;
+  color: #3f51b5;
+}

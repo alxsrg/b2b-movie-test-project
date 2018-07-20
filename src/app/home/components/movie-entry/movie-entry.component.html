@@ -1,0 +1,36 @@
+<mat-list-item>
+  <ng-container mat-list-icon [ngSwitch]="!!model.posterImg">
+    <img style="display: table-cell" *ngSwitchCase="true"
+         class="option-img"
+         aria-hidden
+         [src]="model.posterImg"
+         width="70">
+    <mat-icon class="no-image-icon"
+              *ngSwitchCase="false"
+              mat-list-icon>camera_alt
+    </mat-icon>
+  </ng-container>
+
+  <p mat-line class="mat-display-1 p-color"><strong>{{model.title}}</strong></p>
+  <p mat-line><strong>Year:</strong> {{model.year}}</p>
+  <p mat-line><strong>Type:</strong> {{model.type}}</p>
+  <p mat-line><strong>IMDb ID:</strong> {{model.imdbid}}</p>
+  <button mat-raised-button
+          [matTooltipPosition]="'above'"
+          matTooltip="View more details of movie"
+          color="primary"
+          class="det-but"
+          (click)="showDetails()">
+    <mat-icon mat-list-icon>reorder</mat-icon>
+    Details
+  </button>
+  <button mat-raised-button
+          [matTooltipPosition]="'above'"
+          matTooltip="Delete movie from list"
+          color="accent"
+          class="del-but"
+          (click)="delete()">
+    <mat-icon mat-list-icon>delete_sweep</mat-icon>
+  </button>
+  <mat-divider></mat-divider>
+</mat-list-item>
