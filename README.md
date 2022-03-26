@@ -1,5 +1,5 @@
 ## B2B Movie Test Project
-## Author: Sergeev Alexander ##
+## Author: S Alexander ##
 
 ### Description ###
 
